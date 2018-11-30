@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6EA3F609-D1BA-4874-9C0D-28257B1117AA}"
+	ProjectSection(SolutionItems) = preProject
+		..\scripts\Criação BD.sql = ..\scripts\Criação BD.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{E8C24AA4-A825-441E-A4B7-914B74328526}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NHibernate", "NHibernate", "{A4575401-5DC4-423A-8866-BB97D6AC3EF4}"
+	ProjectSection(SolutionItems) = preProject
+		NHibernate.DLL\Iesi.Collections.dll = NHibernate.DLL\Iesi.Collections.dll
+		NHibernate.DLL\log4net.dll = NHibernate.DLL\log4net.dll
+		NHibernate.DLL\NHibernate.ByteCode.Castle.dll = NHibernate.DLL\NHibernate.ByteCode.Castle.dll
+		NHibernate.DLL\NHibernate.ByteCode.LinFu.dll = NHibernate.DLL\NHibernate.ByteCode.LinFu.dll
+		NHibernate.DLL\NHibernate.ByteCode.Spring.dll = NHibernate.DLL\NHibernate.ByteCode.Spring.dll
+		NHibernate.DLL\NHibernate.dll = NHibernate.DLL\NHibernate.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{DB33249C-0083-4803-B1C3-AC442945E113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Treinamento.WEB", "Treinamento.WEB\Treinamento.WEB.csproj", "{730F2980-ECA4-4AE6-A836-C7C55FB0AED3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Treinamento.DTO", "Treinamento.DTO\Treinamento.DTO.csproj", "{B363C7FB-836B-450C-AD29-7C8DB648D6AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Treinamento.DAL", "Treinamento.DAL\Treinamento.DAL.csproj", "{A79F0A94-ABC7-4982-BD78-866AD50E0268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Treinamento.BLL", "Treinamento.BLL\Treinamento.BLL.csproj", "{106C3F22-4FC0-4DBB-A23C-2ABA338723E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Treinamento.Exceptions", "Treinamento.Exceptions\Treinamento.Exceptions.csproj", "{BD2BA087-70BF-4BB3-99C6-C5F70324E666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemExtensions", "SystemExtensions\SystemExtensions.csproj", "{D76BA632-1CE0-4902-9E4A-DBD915D040C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{730F2980-ECA4-4AE6-A836-C7C55FB0AED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730F2980-ECA4-4AE6-A836-C7C55FB0AED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730F2980-ECA4-4AE6-A836-C7C55FB0AED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730F2980-ECA4-4AE6-A836-C7C55FB0AED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B363C7FB-836B-450C-AD29-7C8DB648D6AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B363C7FB-836B-450C-AD29-7C8DB648D6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B363C7FB-836B-450C-AD29-7C8DB648D6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B363C7FB-836B-450C-AD29-7C8DB648D6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A79F0A94-ABC7-4982-BD78-866AD50E0268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A79F0A94-ABC7-4982-BD78-866AD50E0268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A79F0A94-ABC7-4982-BD78-866AD50E0268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A79F0A94-ABC7-4982-BD78-866AD50E0268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106C3F22-4FC0-4DBB-A23C-2ABA338723E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106C3F22-4FC0-4DBB-A23C-2ABA338723E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106C3F22-4FC0-4DBB-A23C-2ABA338723E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106C3F22-4FC0-4DBB-A23C-2ABA338723E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2BA087-70BF-4BB3-99C6-C5F70324E666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2BA087-70BF-4BB3-99C6-C5F70324E666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2BA087-70BF-4BB3-99C6-C5F70324E666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2BA087-70BF-4BB3-99C6-C5F70324E666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76BA632-1CE0-4902-9E4A-DBD915D040C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76BA632-1CE0-4902-9E4A-DBD915D040C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76BA632-1CE0-4902-9E4A-DBD915D040C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76BA632-1CE0-4902-9E4A-DBD915D040C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{730F2980-ECA4-4AE6-A836-C7C55FB0AED3} = {DB33249C-0083-4803-B1C3-AC442945E113}
+		{B363C7FB-836B-450C-AD29-7C8DB648D6AD} = {E8C24AA4-A825-441E-A4B7-914B74328526}
+		{A79F0A94-ABC7-4982-BD78-866AD50E0268} = {E8C24AA4-A825-441E-A4B7-914B74328526}
+		{106C3F22-4FC0-4DBB-A23C-2ABA338723E1} = {E8C24AA4-A825-441E-A4B7-914B74328526}
+		{BD2BA087-70BF-4BB3-99C6-C5F70324E666} = {E8C24AA4-A825-441E-A4B7-914B74328526}
+		{D76BA632-1CE0-4902-9E4A-DBD915D040C3} = {E8C24AA4-A825-441E-A4B7-914B74328526}
+	EndGlobalSection
+EndGlobal

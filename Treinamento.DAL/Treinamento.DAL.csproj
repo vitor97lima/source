@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A79F0A94-ABC7-4982-BD78-866AD50E0268}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Treinamento.DAL</RootNamespace>
+    <AssemblyName>Treinamento.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\NHibernate.DLL\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.0.0.3001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NHibernate.DLL\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FactoryDAL.cs" />
+    <Compile Include="IDAL.cs" />
+    <Compile Include="NHibernate\DALNH.cs" />
+    <Compile Include="NHibernate\Modelo\Beneficio\ContraChequeMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Beneficio\EmpregadoMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Beneficio\ETipoEventoType.cs" />
+    <Compile Include="NHibernate\Modelo\Beneficio\EventoFolhaMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Emprestimo\ContratoMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Emprestimo\IndiceFinanceiroMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Emprestimo\IndiceFinanceiroValorMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Emprestimo\PrestacaoMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Emprestimo\SaldoEmprestimoMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\AgenciaMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\BancoMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\CidadeMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\ContaBancariaMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\EnderecoMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\TipoContaBancariaMapping.cs" />
+    <Compile Include="NHibernate\Modelo\Global\UnidadeFederativaMapping.cs" />
+    <Compile Include="NHibernate\NHibernateHelper.cs" />
+    <Compile Include="NHibernate\Modelo\EnumCharType.cs" />
+    <Compile Include="NHibernate\Modelo\EnumSiglaType.cs" />
+    <Compile Include="NHibernate\Modelo\EnumTextType.cs" />
+    <Compile Include="NHibernate\SqlStatementInterceptor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SystemExtensions\SystemExtensions.csproj">
+      <Project>{D76BA632-1CE0-4902-9E4A-DBD915D040C3}</Project>
+      <Name>SystemExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Treinamento.DTO\Treinamento.DTO.csproj">
+      <Project>{B363C7FB-836B-450C-AD29-7C8DB648D6AD}</Project>
+      <Name>Treinamento.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NHibernate\Modelo\Global.DTO.hbm.xml" />
+    <EmbeddedResource Include="NHibernate\NHibernate.MSSQL.PRODUCAO.cfg.xml" />
+    <EmbeddedResource Include="NHibernate\NHibernate.MSSQL.TESTE.cfg.xml" />
+    <EmbeddedResource Include="NHibernate\NHibernate.ORACLE.TESTE.cfg.xml" />
+    <EmbeddedResource Include="NHibernate\Resource\Castle.Core.dll" />
+    <EmbeddedResource Include="NHibernate\Resource\LinFu.DynamicProxy.dll" />
+    <EmbeddedResource Include="NHibernate\Resource\NHibernate.ByteCode.Castle.dll" />
+    <EmbeddedResource Include="NHibernate\Resource\NHibernate.ByteCode.LinFu.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

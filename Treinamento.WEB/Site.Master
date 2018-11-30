@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Treinamento.WEB.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <div class="page">
+            <div class="header">
+                <div class="title">
+                    <h1>Atena Tecnologia - Treinamento de Programador
+                    </h1>
+                </div>
+                <div class="clear hideSkiplink">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Início" Value="Início" />
+                            <asp:MenuItem Text="Manutenção Tabelas" Value="Manutenção Tabelas">
+                                <asp:MenuItem Text="UF" Value="UF">
+                                    <asp:MenuItem Text="Cadastrar" Value="Cadastrar"
+                                        NavigateUrl="~/Tabelas/uf/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Tabelas/uf/Listar.aspx" Text="Listar"
+                                        Value="Listar"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Cidade" Value="Cidade">
+                                    <asp:MenuItem Text="Cadastrar" Value="Cadastrar"
+                                        NavigateUrl="~/Tabelas/cidade/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Listar" Value="Listar"
+                                        NavigateUrl="~/Tabelas/cidade/Listar.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Banco" Value="Banco">
+                                    <asp:MenuItem Text="Cadastrar" Value="Cadastrar"
+                                        NavigateUrl="~/Tabelas/banco/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Listar" Value="Listar"
+                                        NavigateUrl="~/Tabelas/banco/Listar.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Tipo de Conta Bancária" Value="Tipo de Conta Bancária"
+                                        NavigateUrl="~/Tabelas/banco/tipoConta/Manter.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Agência" Value="Agência">
+                                    <asp:MenuItem Text="Cadastrar" Value="Cadastrar"
+                                        NavigateUrl="~/Tabelas/agencia/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Listar" Value="Listar"
+                                        NavigateUrl="~/Tabelas/agencia/Listar.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Empregados" Value="Empregados">
+                                    <asp:MenuItem Text="Cadastrar" Value="Cadastrar"
+                                        NavigateUrl="~/Tabelas/empregado/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Listar" Value="Listar"
+                                        NavigateUrl="~/Tabelas/empregado/Listar.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Benefício" Value="Beneficio">
+                                <asp:MenuItem Text="Folha de Pagamento" Value="FolhaPagamento"
+                                    NavigateUrl="~/Beneficio/folha/Listar.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Evento Folha" Value="FolhaPagamento">
+                                    <asp:MenuItem Text="Cadastrar" Value="FolhaPagamento"
+                                        NavigateUrl="~/Beneficio/eventoFolha/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Listar" Value="FolhaPagamento"
+                                        NavigateUrl="~/Beneficio/eventoFolha/Listar.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Empréstimo" Value="Emprestimo">
+                                <asp:MenuItem Text="Índice Financeiro" Value="Empregados">
+                                    <asp:MenuItem Text="Cadastrar" Value="Cadastrar"
+                                        NavigateUrl="~/Emprestimo/indiceFinanceiro/Manter.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Listar" Value="Listar"
+                                        NavigateUrl="~/Emprestimo/indiceFinanceiro/Listar.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="Solicitar Empréstimo" Value="SolicitarEmprestimo"
+                                    NavigateUrl="~/Emprestimo/contratos/Empregados.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Situação de Contratos" Value="SituacaoEmprestimos"
+                                    NavigateUrl="~/Emprestimo/contratos/Situacao.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Liberar Empréstimo" Value="LiberarEmprestimo"
+                                    NavigateUrl="~/Emprestimo/contratos/Liberar.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Exportar Empréstimo" Value="ExportarEmprestimo"
+                                    NavigateUrl="~/Emprestimo/contratos/Exportar.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Pagamentos" Value="Pagamentos">
+                                    <asp:MenuItem Text="Pagamento da Concessão" Value="PagamentoConcessao"
+                                        NavigateUrl="~/Emprestimo/pagamento/PagamentoConcessao.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Baixa de Prestação" Value="BaixaPrestacao"
+                                        NavigateUrl="~/Emprestimo/pagamento/ContratosAtivos.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </div>
+            </div>
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="footer">
+        </div>
+    </form>
+</body>
+</html>

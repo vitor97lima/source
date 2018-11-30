@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+
+   <session-factory name="Oracle">
+    <property name="connection.driver_class">
+      <!--NHibernate.Driver.OracleDataClientDriver-->
+      NHibernate.Driver.OracleClientDriver
+    </property>
+
+    <property name="dialect">
+      NHibernate.Dialect.Oracle9iDialect
+    </property>
+
+    <property name="connection.connection_string">
+      Data Source=atena.syslg.com;
+      User ID=phal0001;
+      password=k69mag;
+    </property>
+
+    <property name="proxyfactory.factory_class">
+      NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
+    </property>
+
+    <property name="hbm2ddl.auto">update</property>
+
+    <mapping assembly="Treinamento.DAL"/>  
+
+  </session-factory>
+</hibernate-configuration>
