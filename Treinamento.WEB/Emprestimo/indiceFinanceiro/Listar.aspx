@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Label ID="LabelMensagem" runat="server" Text="Não foram encontradas Unidades Federativas cadastradas" Visible="false" CssClass="label"></asp:Label>
+    <asp:Label ID="LabelMensagem" runat="server" Text="Não foi encontrado nenhum Índice Financeiro Cadastrado" Visible="false" CssClass="label"></asp:Label>
     <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="gridviewListagem"
         CellPadding="4" ForeColor="#333333" GridLines="None" >
