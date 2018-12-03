@@ -29,9 +29,35 @@ namespace Treinamento.BLL.Emprestimo
             if (ex != null) throw ex;
         }
 
-        public void CorrigirPrestacao(Contrato pContrato)
+        public void CorrigirPrestacoes(Contrato pContrato)
         {
-            IList<Prestacao> lPrestacoes = pContrato.Prestacoes;
+            if (pContrato.Prestacoes != null && pContrato.IndiceCorrecao != null)
+            {
+                IList<Prestacao> lPrestacoes = pContrato.Prestacoes;
+                foreach (Prestacao lPrestacao in lPrestacoes)
+                {
+                    float lValorPrestacaoAnterior = lPrestacao.ValorPrestacao;
+                    lPrestacao.ValorPrestacao = (float)(lPrestacao.ValorPrestacao * Math.Pow((1 + pContrato.IndiceCorrecao.ValorMaisRecente.Valor), (lPrestacao.NumeroPrestacao)));
+                    lPrestacao.ValorCorrecao = lValorPrestacaoAnterior - lValorPrestacaoAnterior;
+                }
+            }
+            else
+            {
+                throw new OperacaoNaoRealizadaException();
+            }
+        }
+        public void CorrigirPrestacao(Prestacao pPrestacao)
+        {
+            if (pPrestacao != null && pPrestacao.Contrato.IndiceCorrecao != null)
+            {
+                float lValorPrestacaoAnterior = pPrestacao.ValorPrestacao;
+                pPrestacao.ValorPrestacao = (float)(pPrestacao.ValorPrestacao * Math.Pow((1 + pPrestacao.Contrato.IndiceCorrecao.ValorMaisRecente.Valor), (pPrestacao.NumeroPrestacao)));
+                pPrestacao.ValorCorrecao = lValorPrestacaoAnterior - lValorPrestacaoAnterior;
+            }
+            else
+            {
+                throw new OperacaoNaoRealizadaException();
+            }
         }
         public IList<Prestacao> GerarPestacoes(Contrato pContrato)
         {
@@ -56,7 +82,7 @@ namespace Treinamento.BLL.Emprestimo
                 {
                     Prestacao lPrestacao = new Prestacao();
                     lPrestacao.ValorPrincipal = lValorEmprestimo;
-                    lPrestacao.ValorPrestacao = (float) (lValorPrestacao * Math.Pow((1 + pContrato.IndiceCorrecao.ValorMaisRecente.Valor) , (i + 1)));
+                    lPrestacao.ValorPrestacao = lValorPrestacao;
                     lPrestacao.NumeroPrestacao = i + 1;
                     lPrestacao.Contrato = pContrato;
                     lVencimento = lVencimento.AddMonths(1);
