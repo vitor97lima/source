@@ -103,15 +103,6 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro {
         protected global::System.Web.UI.WebControls.Button BtnSalvar;
         
         /// <summary>
-        /// BtnExcluir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnExcluir;
-        
-        /// <summary>
         /// BtnCancelar control.
         /// </summary>
         /// <remarks>

@@ -21,10 +21,10 @@ namespace Treinamento.DAL.NHibernate.Modelo.Beneficio
                 .Column("fkEmpregadoContraCheque")
                 .Cascade.None();
             HasMany(x => x.Eventos)
-                .Table("tbContraChequeEventos")
-                .KeyColumn("cch_int_id")
-                .AsEntityMap("evf_int_id")
-                .Element("cce_vlr_valor", y => y.Type<float>());
+              .Table("tbContraChequeEventos")
+              .KeyColumn("cch_int_id")
+              .AsEntityMap("evf_int_id")
+              .Element("cce_vlr_valor", y => y.Type<float>());
         }
     }
 }

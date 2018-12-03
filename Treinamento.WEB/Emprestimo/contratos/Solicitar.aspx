@@ -35,6 +35,10 @@
         <asp:Label ID="Label3" runat="server" CssClass="label" Text="Codigo:"></asp:Label><br />
         <asp:TextBox ID="TxtCodigo" runat="server" MaxLength="14" TextMode="Number" Width="60px"></asp:TextBox>
         <br />
+        <asp:Label ID="Label18" runat="server" CssClass="label" Text="Índice de Correção"></asp:Label>
+        <br />
+        <asp:DropDownList ID="DropDownIndiceCorrecao" runat="server">
+        </asp:DropDownList>
         <br />
 
         <br />

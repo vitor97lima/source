@@ -17,9 +17,6 @@
             <asp:HyperLinkField DataNavigateUrlFields="Id" 
                 DataNavigateUrlFormatString="~/Emprestimo/indiceFinanceiro/Manter.aspx?id={0}&amp;acao=editar" 
                 NavigateUrl="~/Emprestimo/indiceFinanceiro/Manter.aspx" Text="Editar" />
-            <asp:HyperLinkField DataNavigateUrlFields="Id" 
-                DataNavigateUrlFormatString="~/Emprestimo/indiceFinanceiro/Manter.aspx?id={0}&amp;acao=excluir" 
-                NavigateUrl="~/Emprestimo/indiceFinanceiro/Manter.aspx" Text="Excluir" />
         </Columns>
 
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

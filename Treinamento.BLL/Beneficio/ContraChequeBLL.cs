@@ -108,6 +108,22 @@ namespace Treinamento.BLL.Beneficio
             pContraCheque.ValorLiquido = pContraCheque.Empregado.SalarioBase + lTotalEventoFolha;
         }
 
+        public ContraCheque GerarContraCheque(Empregado pEmpregado, DateTime pDataReferencia)
+        {
+            if (pEmpregado.Id >= 1 && pDataReferencia > pEmpregado.DataAdmissao)
+            {
+                ContraCheque lContraCheque = new ContraCheque();
+                lContraCheque.Data = pDataReferencia;
+                lContraCheque.Empregado = pEmpregado;
+                ContraChequeBLL.Instance.CalcularFolhaEvento(lContraCheque);
+                ContraChequeBLL.Instance.CalcularValorLiquido(lContraCheque);
+                return lContraCheque;
+            }
+            else
+            {
+                throw new OperacaoNaoRealizadaException();
+            }
+        }
         public string GerarTxt(ContraCheque pContraCheque)
         {
 

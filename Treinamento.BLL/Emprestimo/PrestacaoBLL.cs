@@ -13,7 +13,7 @@ namespace Treinamento.BLL.Emprestimo
         {
             BusinessException ex = null;
 
-            if(pPrestacao.Contrato == null)
+            if (pPrestacao.Contrato == null)
             {
                 throw new CampoNaoInformadoException("Prestação", "Contrato", true, ex);
             }
@@ -29,6 +29,10 @@ namespace Treinamento.BLL.Emprestimo
             if (ex != null) throw ex;
         }
 
+        public void CorrigirPrestacao(Contrato pContrato)
+        {
+            IList<Prestacao> lPrestacoes = pContrato.Prestacoes;
+        }
         public IList<Prestacao> GerarPestacoes(Contrato pContrato)
         {
             if (pContrato != null)
@@ -52,7 +56,7 @@ namespace Treinamento.BLL.Emprestimo
                 {
                     Prestacao lPrestacao = new Prestacao();
                     lPrestacao.ValorPrincipal = lValorEmprestimo;
-                    lPrestacao.ValorPrestacao = lValorPrestacao;
+                    lPrestacao.ValorPrestacao = (float) (lValorPrestacao * Math.Pow((1 + pContrato.IndiceCorrecao.ValorMaisRecente.Valor) , (i + 1)));
                     lPrestacao.NumeroPrestacao = i + 1;
                     lPrestacao.Contrato = pContrato;
                     lVencimento = lVencimento.AddMonths(1);
@@ -67,6 +71,7 @@ namespace Treinamento.BLL.Emprestimo
                 throw new OperacaoNaoRealizadaException();
             }
         }
+
         public IList<Prestacao> GerarPestacoes(Contrato pContrato, uint pQtdPrestacoes)
         {
             if (pContrato != null)
@@ -78,11 +83,10 @@ namespace Treinamento.BLL.Emprestimo
                 IList<Prestacao> lListaPrestacoes = new List<Prestacao>();
                 int lMesConcessao = pContrato.DataConcessao.Month;
                 int lAnoConcessao = pContrato.DataConcessao.Year;
-                DateTime lVencimento = new DateTime(lAnoConcessao,lMesConcessao, 1);
+                DateTime lVencimento = new DateTime(lAnoConcessao, lMesConcessao, 1);
                 lVencimento.AddMonths(2).AddDays(-1);
                 float lValorEmprestimo = pContrato.ValorEmprestimo;
                 float lValorPrestacao = lValorEmprestimo / pQtdPrestacoes;
-
 
                 for (int i = 0; i < pQtdPrestacoes; i++)
                 {

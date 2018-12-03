@@ -14,18 +14,16 @@
             <br />
             <asp:Label ID="Label3" runat="server" CssClass="label" Text="Data Referência:"></asp:Label>
             <br />
-            <asp:TextBox ID="TxtDataReferencia" runat="server" MaxLength="1" TextMode="Date"></asp:TextBox>
+            <asp:TextBox ID="TxtDataReferencia" runat="server" MaxLength="1" TextMode="Month"></asp:TextBox>
             <br />
             <asp:Label ID="Label4" runat="server" CssClass="label" Text="Valor:"></asp:Label>
             <br />
-            <asp:TextBox ID="TxtValor" runat="server" MaxLength="1" TextMode="Number"></asp:TextBox>
+            <asp:TextBox ID="TxtValor" runat="server" MaxLength="5" ></asp:TextBox>
             <br />
             <br />
             <div id="divAreaBotao">
                 <asp:Button ID="BtnSalvar" runat="server" Text="Salvar" CssClass="botao" 
                     onclick="BtnSalvar_Click"/>
-                <asp:Button ID="BtnExcluir" runat="server" Text="Excluir" CssClass="botao" 
-                    Visible="false" onclick="BtnExcluir_Click"/>
                 <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="botao" 
                     onclick="BtnCancelar_Click"/>
             </div>

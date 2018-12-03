@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Treinamento.DTO.Beneficio;
 using Treinamento.BLL.Beneficio;
 using Treinamento.Exceptions;
-using System.Data;
 
 namespace Treinamento.WEB.Beneficio.contraCheque
 {
@@ -39,11 +34,8 @@ namespace Treinamento.WEB.Beneficio.contraCheque
                 try
                 {
                     Empregado lEmpregado = EmpregadoBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
-                    ContraCheque lContraCheque = new ContraCheque();
-                    lContraCheque.Data = DateTime.Parse(txtDataRef.Text);
-                    lContraCheque.Empregado = lEmpregado;
-                    ContraChequeBLL.Instance.CalcularFolhaEvento(lContraCheque);
-                    ContraChequeBLL.Instance.CalcularValorLiquido(lContraCheque);
+                    ContraCheque lContraCheque 
+                        =  ContraChequeBLL.Instance.GerarContraCheque(lEmpregado, DateTime.Parse(txtDataRef.Text));
                     lEmpregado.ContraCheques.Add(lContraCheque);
                     EmpregadoBLL.Instance.Persistir(lEmpregado);
                     GridView1.DataSource = lEmpregado.ContraCheques ;

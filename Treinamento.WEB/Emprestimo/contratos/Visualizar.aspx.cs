@@ -34,7 +34,6 @@ namespace Treinamento.WEB.Emprestimo.contratos
                 }
                 lblPrestacoesAbertas.Text = lQntPrestacoesAbertas.ToString();
             }
-           
         }
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {

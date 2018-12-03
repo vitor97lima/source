@@ -41,7 +41,6 @@ namespace Treinamento.WEB.Emprestimo.contratos
                         break;
                 }
             }
-
             GridSolicitados.DataSource = lContratosSolicitados;
             GridSolicitados.DataBind();
 

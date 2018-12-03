@@ -26,6 +26,8 @@
                 <HeaderStyle BackColor="#4b6c9e" Font-Bold="True" ForeColor="White" />
                 <AlternatingRowStyle BackColor="White" />
             </asp:GridView>
+            <br />
+            <asp:Label ID="lblSaldoDevedor" runat="server"></asp:Label>
         </asp:Panel>
     </asp:Panel>
 </asp:Content>

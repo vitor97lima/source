@@ -25,10 +25,6 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro
                             break;
                         case "editar":
                             break;
-                        case "excluir":
-                            BloquearComponentes();
-                            BtnExcluir.Visible = true;
-                            break;
                     }
 
                     try
@@ -56,6 +52,8 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro
         {
             TxtCodigo.Enabled
                 = TxtPeriodicidade.Enabled
+                = TxtDataReferencia.Enabled
+                = TxtValor.Enabled
                 = BtnSalvar.Visible = false;
         }
 
@@ -111,20 +109,6 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro
                 lIndiceFinanceiro.Valores.Add(lIndiceFinanceiroValor);
                 IndiceFinanceiroBLL.Instance.Persistir(lIndiceFinanceiro);
                 Web.ExibeAlerta(Page, mensagem, "Listar.aspx");
-            }
-            catch (BusinessException ex)
-            {
-                Web.ExibeAlerta(Page, ex.Message);
-            }
-        }
-
-        protected void BtnExcluir_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                IndiceFinanceiro lIndiceFinanceiro = IndiceFinanceiroBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
-                IndiceFinanceiroBLL.Instance.Excluir(lIndiceFinanceiro);
-                Web.ExibeAlerta(Page, "Índice Financeiro excluído com sucesso!", "Listar.aspx");
             }
             catch (BusinessException ex)
             {
