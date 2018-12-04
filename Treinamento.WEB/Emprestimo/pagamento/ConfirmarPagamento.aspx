@@ -9,7 +9,7 @@
             <asp:Label ID="lblDataConcessao" runat="server"></asp:Label>
             <br />
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Data de Pagamento: " CssClass="label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" CssClass="label" Text="Data de Pagamento: "></asp:Label>
             <br />
             <asp:TextBox ID="TxtDataPagamento" runat="server" MaxLength="100" TextMode="Date"></asp:TextBox>
             <br />
@@ -22,6 +22,12 @@
             :
             <br />
             <asp:Label ID="lblValorParcela" runat="server"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label6" runat="server" CssClass="label" Text="Valor da Correção"></asp:Label>
+            :
+            <br />
+            <asp:Label ID="lblValorCorrecao" runat="server"></asp:Label>
             <br />
             <br />
             <asp:Label ID="Label4" runat="server" CssClass="label" Text="Total a pagar"></asp:Label>

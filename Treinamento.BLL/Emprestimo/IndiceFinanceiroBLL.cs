@@ -15,13 +15,30 @@ namespace Treinamento.BLL.Emprestimo
 
             if (pIndiceFinanceiro.Codigo == null)
                 ex = new CampoNaoInformadoException("Índice Financeiro", "Código", true, ex);
-            if(pIndiceFinanceiro.Periodicidade.ToString() == "")
+            if (pIndiceFinanceiro.Periodicidade.ToString() == "")
                 ex = new CampoNaoInformadoException("Índice Financeiro", "Periodicidade", true, ex);
             if (pOpcionais)
             {
             }
 
             if (ex != null) throw ex;
+        }
+
+        public IndiceFinanceiroValor BuscarIndicePorVencimentoPrestacao(IndiceFinanceiro pIndiceFinanceiro, Prestacao pPrestacao)
+        {
+            if (pIndiceFinanceiro.Id < 1)
+                throw new OperacaoNaoRealizadaException();
+            if (pPrestacao.DataVencimento == null)
+                throw new OperacaoNaoRealizadaException();
+
+            IndiceFinanceiroValor lIndiceValorReferencia = pIndiceFinanceiro.ValorMaisAntigo;
+            foreach (IndiceFinanceiroValor lIndiceValor in pIndiceFinanceiro.Valores)
+            {
+                if (lIndiceValor.DataReferencia < pPrestacao.DataVencimento)
+                    if (lIndiceValorReferencia.DataReferencia < lIndiceValor.DataReferencia)
+                        lIndiceValorReferencia = lIndiceValor;
+            }
+            return lIndiceValorReferencia;
         }
     }
 }

@@ -20,22 +20,32 @@ namespace Treinamento.WEB.Emprestimo.pagamento
                 {
                     Page.Response.Redirect("ContratosAtivos.aspx");
                 }
-                try
+                else
                 {
-                    Prestacao lPrestacao = PrestacaoBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
-                    if (lPrestacao.DataPagamento != null)
-                        Web.ExibeAlerta(Page, "Esta prestação já foi paga!", "Prestacoes.aspx?id=" + lPrestacao.Contrato.Id);
-                    lblDataVencimento.Text = lPrestacao.DataVencimento.ToString();
-                    lblValorParcela.Text = lPrestacao.ValorPrestacao.ToString();
-                    lblTotalPagar.Text = lPrestacao.ValorPrestacao.ToString();
-                    lblDataConcessao.Text = lPrestacao.Contrato.DataConcessao.ToString(@"dd/MM/yyyy");
-                }
-                catch (BusinessException ex)
-                {
-                    Web.ExibeAlerta(Page, ex.Message);
+                    try
+                    {
+                        Prestacao lPrestacao = PrestacaoBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
+                        if (lPrestacao.DataPagamento != null)
+                            Web.ExibeAlerta(Page, "Esta prestação já foi paga!", "Prestacoes.aspx?id=" + lPrestacao.Contrato.Id);
+                        else if (lPrestacao.Contrato == null)
+                            Web.ExibeAlerta(Page, "Operação não pode ser realizada!", "ContratosAtivos.aspx");
+                        else
+                        {
+                            PrestacaoBLL.Instance.CorrigirPrestacao(lPrestacao);
+
+                            lblDataVencimento.Text = lPrestacao.DataVencimento.ToString();
+                            lblValorParcela.Text = lPrestacao.ValorPrincipal.ToString();
+                            lblValorCorrecao.Text = lPrestacao.ValorCorrecao.ToString();
+                            lblTotalPagar.Text = lPrestacao.ValorPrestacao.ToString();
+                            lblDataConcessao.Text = lPrestacao.Contrato.DataConcessao.ToString(@"dd/MM/yyyy");
+                        }
+                    }
+                    catch (BusinessException ex)
+                    {
+                        Web.ExibeAlerta(Page, ex.Message);
+                    }
                 }
             }
-
         }
         protected void BtnSalvar_Click(object sender, EventArgs e)
         {
@@ -61,6 +71,7 @@ namespace Treinamento.WEB.Emprestimo.pagamento
                     else
                     {
                         lPrestacao.DataPagamento = DateTime.Parse(TxtDataPagamento.Text);
+
                         PrestacaoBLL.Instance.Persistir(lPrestacao);
                         Web.ExibeAlerta(Page, "Parcela Paga!", "Prestacoes.aspx?id=" + lPrestacao.Contrato.Id);
                         if (!(ContratoBLL.Instance.ExistePrestacaoAberta(lPrestacao.Contrato)))

@@ -25,15 +25,7 @@ namespace Treinamento.WEB.Emprestimo.pagamento
                             throw new OperacaoNaoRealizadaException();
                         }
                         GridSolicitados.DataSource = lContrato.Prestacoes;
-
                         GridSolicitados.DataBind();
-                        float lSaldoDevedor = 0;
-                        foreach (Prestacao lPrestacao in lContrato.Prestacoes)
-                        {
-                            if (lPrestacao.DataPagamento == null)
-                                lSaldoDevedor += lPrestacao.ValorPrestacao;
-                        }
-                        lblSaldoDevedor.Text = "SALDO DEVEDOR: R$" + lSaldoDevedor.ToString();
                     }
                     catch (BusinessException ex)
                     {

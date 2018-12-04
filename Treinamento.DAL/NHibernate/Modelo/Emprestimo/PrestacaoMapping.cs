@@ -21,11 +21,10 @@ namespace Treinamento.DAL.NHibernate.Modelo.Emprestimo
             Map(x => x.NumeroPrestacao, "prs_int_numeroPrestacao")
                 .Not.Nullable();
             Map(x => x.DataPagamento, "prs_dat_dataPagamento");
+            HasOne(x => x.Saldo)
+                .Cascade.All();
             References(x => x.Contrato)
                 .Column("fkContratoPrestacao")
-                .Cascade.None();
-            References(x => x.Saldo, "prs_vlr_saldo")
-                .Column("fkSaldoEmprestimoPrestacao")
                 .Cascade.None();
         }
     }

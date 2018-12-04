@@ -54,5 +54,25 @@ namespace Treinamento.DTO.Emprestimo
                 return lIndiceFinanceiroValor;
             }
         }
+        public virtual IndiceFinanceiroValor ValorMaisAntigo
+        {
+            get
+            {
+                IndiceFinanceiroValor lIndiceFinanceiroValor = null;
+                if (_valores != null)
+                {
+                    DateTime lDataRefMaisAntigo = DateTime.MaxValue;
+                    foreach (IndiceFinanceiroValor lValor in this.Valores)
+                    {
+                        if (lValor.DataReferencia < lDataRefMaisAntigo)
+                        {
+                            lDataRefMaisAntigo = lValor.DataReferencia;
+                            lIndiceFinanceiroValor = lValor;
+                        }
+                    }
+                }
+                return lIndiceFinanceiroValor;
+            }
+        }
     }
 }

@@ -94,6 +94,24 @@ namespace Treinamento.WEB.Emprestimo.pagamento {
         protected global::System.Web.UI.WebControls.Label lblValorParcela;
         
         /// <summary>
+        /// Label6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
+        
+        /// <summary>
+        /// lblValorCorrecao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValorCorrecao;
+        
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>

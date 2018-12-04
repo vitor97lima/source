@@ -10,7 +10,7 @@ namespace Treinamento.DAL.NHibernate.Modelo.Emprestimo
             Schema("emp");
             Table("tbSaldoEmprestimo");
             Id(x => x.Id, "sae_int_id")
-                .GeneratedBy.Native("sqSaldoEmprestimo");
+                .GeneratedBy.Foreign("Prestacao");
             Map(x => x.SaldoPrincipal, "sae_vlr_saldoPrincipal")
                 .Not.Nullable();
             Map(x => x.DataReferencia, "sae_dat_dataReferencia");
@@ -19,9 +19,7 @@ namespace Treinamento.DAL.NHibernate.Modelo.Emprestimo
             References(x => x.Contrato)
                 .Column("fkContratoSaldoEmprestimo")
                 .Cascade.None();
-            References(x => x.Prestacao, "sae_int_prestacao")
-                .Column("fkContratoPrestacao")
-                .Cascade.None();
+            HasOne(x => x.Prestacao).Constrained();
 
         }
     }

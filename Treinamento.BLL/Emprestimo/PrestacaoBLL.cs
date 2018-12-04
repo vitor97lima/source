@@ -36,9 +36,12 @@ namespace Treinamento.BLL.Emprestimo
                 IList<Prestacao> lPrestacoes = pContrato.Prestacoes;
                 foreach (Prestacao lPrestacao in lPrestacoes)
                 {
+                    lPrestacao.ValorPrestacao = lPrestacao.ValorPrincipal;
+                    IndiceFinanceiroValor lIndiceValor = IndiceFinanceiroBLL.Instance.BuscarIndicePorVencimentoPrestacao(lPrestacao.Contrato.IndiceCorrecao, lPrestacao);
                     float lValorPrestacaoAnterior = lPrestacao.ValorPrestacao;
-                    lPrestacao.ValorPrestacao = (float)(lPrestacao.ValorPrestacao * Math.Pow((1 + pContrato.IndiceCorrecao.ValorMaisRecente.Valor), (lPrestacao.NumeroPrestacao)));
-                    lPrestacao.ValorCorrecao = lValorPrestacaoAnterior - lValorPrestacaoAnterior;
+                    lPrestacao.ValorPrestacao = (float)(lPrestacao.ValorPrestacao * Math.Pow((1 + lIndiceValor.Valor), (lPrestacao.NumeroPrestacao)));
+                    lPrestacao.ValorCorrecao = lPrestacao.ValorPrestacao - lValorPrestacaoAnterior;
+                    lPrestacao.Saldo = SaldoEmprestimoBLL.Instance.GerarSaldo(lPrestacao);
                 }
             }
             else
@@ -50,9 +53,12 @@ namespace Treinamento.BLL.Emprestimo
         {
             if (pPrestacao != null && pPrestacao.Contrato.IndiceCorrecao != null)
             {
+                pPrestacao.ValorPrestacao = pPrestacao.ValorPrincipal;
+                IndiceFinanceiroValor lIndiceValor = IndiceFinanceiroBLL.Instance.BuscarIndicePorVencimentoPrestacao(pPrestacao.Contrato.IndiceCorrecao, pPrestacao);
                 float lValorPrestacaoAnterior = pPrestacao.ValorPrestacao;
-                pPrestacao.ValorPrestacao = (float)(pPrestacao.ValorPrestacao * Math.Pow((1 + pPrestacao.Contrato.IndiceCorrecao.ValorMaisRecente.Valor), (pPrestacao.NumeroPrestacao)));
-                pPrestacao.ValorCorrecao = lValorPrestacaoAnterior - lValorPrestacaoAnterior;
+                pPrestacao.ValorPrestacao = (float)(pPrestacao.ValorPrestacao * Math.Pow((1 + lIndiceValor.Valor), (pPrestacao.NumeroPrestacao)));
+                pPrestacao.ValorCorrecao = pPrestacao.ValorPrestacao - lValorPrestacaoAnterior;
+                pPrestacao.Saldo = SaldoEmprestimoBLL.Instance.GerarSaldo(pPrestacao);
             }
             else
             {
@@ -77,12 +83,11 @@ namespace Treinamento.BLL.Emprestimo
                 float lValorEmprestimo = pContrato.ValorEmprestimo;
                 float lValorPrestacao = lValorEmprestimo / lQtdPrestacoes;
 
-
                 for (int i = 0; i < lQtdPrestacoes; i++)
                 {
                     Prestacao lPrestacao = new Prestacao();
-                    lPrestacao.ValorPrincipal = lValorEmprestimo;
-                    lPrestacao.ValorPrestacao = lValorPrestacao;
+                    lPrestacao.ValorPrincipal = lValorPrestacao;
+                    lPrestacao.ValorPrestacao = 0;
                     lPrestacao.NumeroPrestacao = i + 1;
                     lPrestacao.Contrato = pContrato;
                     lVencimento = lVencimento.AddMonths(1);

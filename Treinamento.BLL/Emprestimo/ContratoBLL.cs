@@ -31,6 +31,7 @@ namespace Treinamento.BLL.Emprestimo
             if (pContrato.Situacao == ESituacaoContrato.Solicitado)
             {
                 pContrato.Prestacoes = PrestacaoBLL.Instance.GerarPestacoes(pContrato);
+                pContrato.InicioAmortizacao = pContrato.Prestacoes[0].DataVencimento;
                 pContrato.Situacao = ESituacaoContrato.Liberado;
                 ContratoBLL.Instance.Persistir(pContrato);
             }
