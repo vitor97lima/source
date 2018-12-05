@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Treinamento.BLL.Emprestimo;
 using Treinamento.DTO.Emprestimo;
+using Treinamento.DTO.Global;
 
 namespace Treinamento.WEB.Emprestimo.contratos
 {
@@ -13,7 +14,7 @@ namespace Treinamento.WEB.Emprestimo.contratos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            IList<Contrato> lContratos = ContratoBLL.Instance.Listar();
+            IList<Contrato> lContratos = ContratoBLL.Instance.Listar(Ordem<Contrato>.ASC(x => x.DataConcessao), Ordem<Contrato>.ASC(x => x.Empregado.Nome));
             IList<Contrato> lContratosSolicitados = new List<Contrato>();
             IList<Contrato> lContratosLiberados = new List<Contrato>();
             IList<Contrato> lContratosExportados = new List<Contrato>();

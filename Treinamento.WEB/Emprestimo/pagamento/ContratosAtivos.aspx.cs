@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.UI;
 using System.Collections.Generic;
 using Treinamento.BLL.Beneficio;
@@ -15,7 +16,7 @@ namespace Treinamento.WEB.Emprestimo.pagamento
         {
             if (!IsPostBack)
             {
-                IList<Contrato> lContratos = ContratoBLL.Instance.Listar();
+                IList<Contrato> lContratos = ContratoBLL.Instance.Listar(Ordem<Contrato>.ASC(x => x.DataConcessao), Ordem<Contrato>.ASC(x => x.Empregado.Nome));
                 IList<Contrato> lContratosAtivos = new List<Contrato>();
 
                 foreach (Contrato lContrato in lContratos)

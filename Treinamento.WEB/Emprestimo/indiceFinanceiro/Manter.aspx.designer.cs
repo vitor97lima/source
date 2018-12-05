@@ -94,6 +94,24 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro {
         protected global::System.Web.UI.WebControls.TextBox TxtValor;
         
         /// <summary>
+        /// PanelValores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelValores;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
         /// BtnSalvar control.
         /// </summary>
         /// <remarks>

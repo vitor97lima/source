@@ -23,6 +23,7 @@ namespace Treinamento.WEB.Emprestimo.contratos
             TxtValorEmprestimo.Text = lContrato.ValorEmprestimo.ToString();
             lblValorPrestacao.Text = lContrato.ValorPrestacao.ToString();
             lblSituacao.Text = lContrato.Situacao.ToString();
+            TxtDataConcessao.Text = lContrato.DataConcessao.ToString("yyyy-MM-dd");
             if (lContrato.Prestacoes != null)
             {
                 lblQntPrestacao.Text = lContrato.Prestacoes.Count.ToString();

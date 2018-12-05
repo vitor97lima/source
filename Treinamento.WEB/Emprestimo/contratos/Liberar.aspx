@@ -15,6 +15,7 @@
                     <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
                     <asp:BoundField DataField="Empregado.Nome" HeaderText="NomeEmpregado" />
                     <asp:BoundField DataField="ValorEmprestimo" HeaderText="ValorEmprestimo" />
+                     <asp:BoundField DataField="DataConcessao" HeaderText="Data de Concessão" />
                     <asp:HyperLinkField DataNavigateUrlFields="Id"
                         DataNavigateUrlFormatString="~/Emprestimo/contratos/Visualizar.aspx?id={0}"
                         NavigateUrl="~/Emprestimo/contratos/Liberar.aspx" Text="Abrir" />

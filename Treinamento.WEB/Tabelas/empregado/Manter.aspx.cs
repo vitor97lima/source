@@ -14,9 +14,13 @@ namespace Treinamento.WEB.Tabelas.empregado
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregarTodosDropDown();
             if (!IsPostBack)
             {
+                CarregarDropDownUf();
+                CarregarDropDownBanco();
+                CarregarDropDownTipoConta();
+                CarregarDropDownCidades();
+                CarregarDropDownAgencias();
                 if (Request.QueryString["id"] != null)
                 {
                     switch (Request.QueryString["acao"])
@@ -37,7 +41,7 @@ namespace Treinamento.WEB.Tabelas.empregado
                         Empregado lEmpregado =
                             EmpregadoBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
                         TxtNome.Text = lEmpregado.Nome;
-                        txtDataAdmissao.Text = lEmpregado.DataAdmissao.ToString("MM/dd/yyyy");
+                        txtDataAdmissao.Text = lEmpregado.DataAdmissao.ToString("yyyy-MM-dd");
                         TxtCPF.Text = lEmpregado.Cpf;
                         TxtSalarioBase.Text = lEmpregado.SalarioBase.ToString();
 
@@ -55,6 +59,8 @@ namespace Treinamento.WEB.Tabelas.empregado
                         DropDownTipoConta.SelectedValue = lContaBancaria.Tipo.Id.ToString();
                         TxtConta.Text = lContaBancaria.Numero;
                         TxtDigitoConta.Text = lContaBancaria.Digito;
+                        CarregarDropDownCidades();
+                        CarregarDropDownAgencias();
                     }
                     catch (BusinessException ex)
                     {
@@ -227,26 +233,36 @@ namespace Treinamento.WEB.Tabelas.empregado
                 }
             }
         }
-        protected void CarregarTodosDropDown()
+
+        protected void CarregarDropDownUf()
         {
-            //Carregar as UF no DropDown
+            DropDownUf.Items.Clear();
             List<UnidadeFederativa> lListaUf = UnidadeFederativaBLL.Instance.Listar();
             foreach (UnidadeFederativa lUf in lListaUf)
             {
                 DropDownUf.Items.Add(new ListItem(lUf.Sigla, lUf.Id.ToString()));
             }
+        }
+        protected void CarregarDropDownBanco()
+        {
+            DropDownBanco.Items.Clear();
             List<Banco> lListaBanco = BancoBLL.Instance.Listar();
             foreach (Banco banco in lListaBanco)
             {
                 DropDownBanco.Items.Add(new ListItem(banco.Codigo + " - " + banco.Nome, banco.Id.ToString()));
             }
+        }
+        protected void CarregarDropDownTipoConta()
+        {
+            DropDownTipoConta.Items.Clear();
             List<TipoContaBancaria> lListaTipoConta = TipoContaBancariaBLL.Instance.Listar();
             foreach (TipoContaBancaria lTipoConta in lListaTipoConta)
             {
                 DropDownTipoConta.Items.Add(new ListItem(lTipoConta.Operacao + " - " + lTipoConta.Descricao, lTipoConta.Id.ToString()));
             }
-
-            //Carregar as Cidades no DropDown
+        }
+        protected void CarregarDropDownCidades()
+        {
             DropDownCidade.Items.Clear();
             Int32 lUfID = Convert.ToInt32(DropDownUf.SelectedValue);
             UnidadeFederativa lUF = UnidadeFederativaBLL.Instance.BuscarPorId(lUfID);
@@ -257,7 +273,9 @@ namespace Treinamento.WEB.Tabelas.empregado
                     DropDownCidade.Items.Add(new ListItem(cidade.Nome, cidade.Id.ToString()));
                 }
             }
-            //Carregar as Agencias no DropDown
+        }
+        protected void CarregarDropDownAgencias()
+        {
             DropDownAgencia.Items.Clear();
             Int32 lBancoId = Convert.ToInt32(DropDownBanco.SelectedValue);
             Banco lBanco = BancoBLL.Instance.BuscarPorId(lBancoId);

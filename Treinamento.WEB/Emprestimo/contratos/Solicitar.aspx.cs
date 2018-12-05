@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Treinamento.DTO.Global;
 using System.Web.UI;
 using System.Collections.Generic;
 using Treinamento.BLL.Beneficio;

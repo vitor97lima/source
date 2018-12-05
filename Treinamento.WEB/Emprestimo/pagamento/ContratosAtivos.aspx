@@ -13,6 +13,7 @@
                 <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
                 <asp:BoundField DataField="Empregado.Nome" HeaderText="NomeEmpregado" />
                 <asp:BoundField DataField="ValorEmprestimo" HeaderText="Valor Emprestimo" />
+                 <asp:BoundField DataField="DataConcessao" HeaderText="Data de Concessão" />
                 <asp:BoundField DataField="Prestacoes.Count" HeaderText="Prestações" />
                 <asp:HyperLinkField DataNavigateUrlFields="Id"
                     DataNavigateUrlFormatString="~/Emprestimo/pagamento/Prestacoes.aspx?id={0}"

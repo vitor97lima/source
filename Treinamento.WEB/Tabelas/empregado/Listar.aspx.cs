@@ -13,7 +13,7 @@ namespace Treinamento.WEB.Tabelas.empregado
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			GridView1.DataSource = EmpregadoBLL.Instance.Listar();
+			GridView1.DataSource = EmpregadoBLL.Instance.Listar(Ordem<Empregado>.ASC(x => x.Nome));
 			GridView1.DataBind();
 
 			if (GridView1.Rows.Count == 0)

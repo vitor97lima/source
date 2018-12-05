@@ -10,6 +10,7 @@
 
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="Nome" />
+            <asp:BoundField DataField="Banco.Nome" HeaderText="Banco" />
             <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
             <asp:BoundField DataField="Digito" HeaderText="Digito" />
             <asp:HyperLinkField DataNavigateUrlFields="Id" 

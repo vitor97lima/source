@@ -77,7 +77,7 @@ namespace Treinamento.WEB.Emprestimo.pagamento
                         if (!(ContratoBLL.Instance.ExistePrestacaoAberta(lPrestacao.Contrato)))
                         {
                             ContratoBLL.Instance.LiquidarContrato(lPrestacao.Contrato);
-                            Web.ExibeAlerta(Page, "Todas as parcelas foram pagas! Contrato Liquidado", "../contratos/Situacao.aspx");
+                            Web.ExibeAlerta(Page, "Todas as parcelas foram pagas! Contrato Liquidado", "Prestacoes.aspx");
                         }
 
                     }

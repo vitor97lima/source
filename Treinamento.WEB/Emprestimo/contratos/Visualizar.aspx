@@ -9,8 +9,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="PanelManterUF" runat="server" GroupingText="Visualizar Contrato">
-        <asp:Label ID="Label1" runat="server" Text="Nome: " CssClass="label"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Empregado: " CssClass="label"></asp:Label>
         <asp:Label ID="lblNomeEmpregado" runat="server" CssClass="label"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label19" runat="server" CssClass="label" Text="Data de Concessão: "></asp:Label>
+        <asp:TextBox ID="TxtDataConcessao" runat="server" Enabled="False" TextMode="Date"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="Label14" runat="server" CssClass="label" Text="Valor do Emprestimo: "></asp:Label>

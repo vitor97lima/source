@@ -112,6 +112,13 @@ namespace Treinamento.BLL.Beneficio
         {
             if (pEmpregado.Id >= 1 && pDataReferencia > pEmpregado.DataAdmissao)
             {
+                foreach (ContraCheque lCH in pEmpregado.ContraCheques)
+                {
+                    if (lCH.Data == pDataReferencia)
+                    {
+                        throw new OperacaoNaoRealizadaException();
+                    }
+                }
                 ContraCheque lContraCheque = new ContraCheque();
                 lContraCheque.Data = pDataReferencia;
                 lContraCheque.Empregado = pEmpregado;

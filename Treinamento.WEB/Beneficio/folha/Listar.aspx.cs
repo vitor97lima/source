@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Treinamento.DTO.Beneficio;
+using Treinamento.DTO.Global;
 using Treinamento.BLL.Beneficio;
 
 namespace Treinamento.WEB.Beneficio.folha
@@ -13,7 +16,7 @@ namespace Treinamento.WEB.Beneficio.folha
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            IList<Empregado> lEmpregados = EmpregadoBLL.Instance.Listar() ;
+            IList<Empregado> lEmpregados = EmpregadoBLL.Instance.Listar(Ordem<Empregado>.ASC(x => x.Nome));
             GridView1.DataSource = lEmpregados;
             GridView1.DataBind();
 

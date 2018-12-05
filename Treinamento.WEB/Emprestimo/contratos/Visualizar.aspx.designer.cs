@@ -40,6 +40,24 @@ namespace Treinamento.WEB.Emprestimo.contratos {
         protected global::System.Web.UI.WebControls.Label lblNomeEmpregado;
         
         /// <summary>
+        /// Label19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label19;
+        
+        /// <summary>
+        /// TxtDataConcessao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDataConcessao;
+        
+        /// <summary>
         /// Label14 control.
         /// </summary>
         /// <remarks>

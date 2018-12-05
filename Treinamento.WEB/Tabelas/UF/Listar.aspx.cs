@@ -13,7 +13,7 @@ namespace Treinamento.WEB.Tabelas.uf
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			GridView1.DataSource = UnidadeFederativaBLL.Instance.Listar();
+			GridView1.DataSource = UnidadeFederativaBLL.Instance.Listar(Ordem<UnidadeFederativa>.ASC(x=>x.Sigla));
 			GridView1.DataBind();
 
 			if (GridView1.Rows.Count == 0)

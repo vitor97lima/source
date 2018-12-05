@@ -21,6 +21,7 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro
                     switch (Request.QueryString["acao"])
                     {
                         case "abrir":
+                            CarregarValores();
                             BloquearComponentes();
                             break;
                         case "editar":
@@ -38,7 +39,7 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro
                         DateTime lDataRefMaisRecente = DateTime.MinValue;
                         lIndiceFinanceiroValor = lIndiceFinanceiro.ValorMaisRecente;
                         TxtValor.Text = lIndiceFinanceiroValor.Valor.ToString();
-                        TxtDataReferencia.Text = lIndiceFinanceiroValor.DataReferencia.ToShortDateString();
+                        TxtDataReferencia.Text = lIndiceFinanceiroValor.DataReferencia.ToString("yyyy-MM");
                     }
                     catch (BusinessException ex)
                     {
@@ -119,6 +120,14 @@ namespace Treinamento.WEB.Emprestimo.indiceFinanceiro
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect("Listar.aspx");
+        }
+        protected void CarregarValores()
+        {
+            IndiceFinanceiro lIndiceFinanceiro =
+                        IndiceFinanceiroBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
+            GridView1.DataSource = lIndiceFinanceiro.Valores;
+            GridView1.DataBind();
+            PanelValores.Visible = true;
         }
     }
 }
