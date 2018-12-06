@@ -3,6 +3,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        function mascaraInteiro() {
+            if (event.keyCode < 48 || event.keyCode > 57) {
+                event.returnValue = false;
+                return false;
+            }
+        }
+        function valor(z) {
+
+            if (mascaraInteiro(z) == false) {
+                return false;
+            }
+
+            if (z.value > 100) {
+                z.value = 100;
+                return z;
+            }
+        }
+    </script>
     <div id="divFormulario">
         <asp:Panel ID="PanelManterUF" runat="server" GroupingText="Manutenção de Índice Financeiro">
             <asp:Label ID="Label1" runat="server" Text="Código: " CssClass="label"></asp:Label>
@@ -19,7 +38,7 @@
             <br />
             <asp:Label ID="Label4" runat="server" CssClass="label" Text="Valor (%):"></asp:Label>
             <br />
-            <asp:TextBox ID="TxtValor" runat="server" MaxLength="5" Width="32px"></asp:TextBox>
+            <asp:TextBox ID="TxtValor" runat="server" MaxLength="3" Width="32px" onKeyPress="valor(this);"></asp:TextBox>
             <br />
             <br />
             <asp:Panel ID="PanelValores" runat="server" GroupingText="Valores do Índice" Visible="false">

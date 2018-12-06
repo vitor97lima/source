@@ -3,6 +3,69 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script type="text/javascript">
+        function MascaraCPF() {
+            if (mascaraInteiro(document.getElementById('<%=TxtCPF.ClientID%>')) == false) {
+                event.returnValue = false;
+            }
+            return formataCampo(document.getElementById('<%=TxtCPF.ClientID%>'), '000.000.000-00', event);
+        }
+          function Moeda(z) {
+            if (mascaraInteiro(z) == false) {
+                event.returnValue = false;
+            }
+             v = z.value;
+             v = v.replace(/\D/g, "")
+             v = v.replace(/(\d{1})(\d{1,2})$/, "$1,$2")
+             z.value = v;
+         }
+        function mascaraInteiro() {
+            if (event.keyCode < 48 || event.keyCode > 57) {
+                event.returnValue = false;
+                return false;
+            }
+            return true;
+        }
+        function MascaraCep() {
+            if (mascaraInteiro(document.getElementById('<%=TxtEndCep.ClientID%>')) == false) {
+                event.returnValue = false;
+            }
+            return formataCampo(document.getElementById('<%=TxtEndCep.ClientID%>'), '00000-000', event);
+        }
+        //formata de forma generica os campos
+        function formataCampo(campo, Mascara, evento) {
+            var boleanoMascara;
+
+            var Digitato = evento.keyCode;
+            exp = /\-|\.|\/|\(|\)| /g
+            campoSoNumeros = campo.value.toString().replace(exp, "");
+
+            var posicaoCampo = 0;
+            var NovoValorCampo = "";
+            var TamanhoMascara = campoSoNumeros.length;;
+
+            if (Digitato != 8) { // backspace 
+                for (i = 0; i <= TamanhoMascara; i++) {
+                    boleanoMascara = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".")
+                                                            || (Mascara.charAt(i) == "/"))
+                    boleanoMascara = boleanoMascara || ((Mascara.charAt(i) == "(")
+                                                            || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " "))
+                    if (boleanoMascara) {
+                        NovoValorCampo += Mascara.charAt(i);
+                        TamanhoMascara++;
+                    } else {
+                        NovoValorCampo += campoSoNumeros.charAt(posicaoCampo);
+                        posicaoCampo++;
+                    }
+                }
+                campo.value = NovoValorCampo;
+                return true;
+            } else {
+                return true;
+            }
+        }
+    </script>
     <div id="divFormulario">
         <asp:Panel ID="PanelManterUF" runat="server" GroupingText="Manutenção de Empregado">
             <asp:Label ID="Label1" runat="server" Text="Nome: " CssClass="label"></asp:Label>
@@ -11,7 +74,7 @@
             <br />
             <asp:Label ID="Label3" runat="server" Text="CPF: " CssClass="label"></asp:Label>
             <br />
-            <asp:TextBox ID="TxtCPF" runat="server" MaxLength="14" Width="125px"></asp:TextBox>
+            <asp:TextBox ID="TxtCPF" runat="server" MaxLength="14" Width="125px" onKeyPress="MascaraCPF()"></asp:TextBox>
             <br />
             <asp:Label ID="Label11" runat="server" CssClass="label" Text="Data de Admissão: "></asp:Label>
             <br />
@@ -20,7 +83,7 @@
             <asp:Label ID="Label14" runat="server" CssClass="label" Text="Salário Base: "></asp:Label>
             <br />
             <asp:Label ID="Label15" runat="server" CssClass="label" Text="R$"></asp:Label>
-            <asp:TextBox ID="TxtSalarioBase" runat="server" MaxLength="14" TextMode="Number" Width="60px"></asp:TextBox>
+            <asp:TextBox ID="TxtSalarioBase" runat="server" MaxLength="8" onKeyPress="Moeda(this);"></asp:TextBox>
             <br />
             <asp:Panel ID="Panel1" runat="server" GroupingText="Endereço">
                 <br />
@@ -38,11 +101,11 @@
                 <br />
                 <asp:Label ID="Label8" runat="server" Text="CEP: " CssClass="label"></asp:Label>
                 <br />
-                <asp:TextBox ID="TxtEndCep" runat="server" MaxLength="8" Width="100"></asp:TextBox>
+                <asp:TextBox ID="TxtEndCep" runat="server" MaxLength="9" Width="100" onKeyPress="MascaraCep();"></asp:TextBox>
                 <br />
                 <asp:Label ID="Label9" runat="server" Text="UF: " CssClass="label"></asp:Label>
                 <br />
-                <asp:DropDownList ID="DropDownUf" runat="server" OnLoad="DropDownUf_SelectedIndexChanged" OnSelectedIndexChanged="DropDownUf_SelectedIndexChanged" style="height: 22px" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownUf" runat="server" OnLoad="DropDownUf_SelectedIndexChanged" OnSelectedIndexChanged="DropDownUf_SelectedIndexChanged" Style="height: 22px" AutoPostBack="True">
                 </asp:DropDownList>
                 <br />
                 <asp:Label ID="Label10" runat="server" Text="Cidade: " CssClass="label"></asp:Label>

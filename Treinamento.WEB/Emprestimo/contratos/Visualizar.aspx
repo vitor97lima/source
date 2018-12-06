@@ -20,7 +20,7 @@
         <asp:Label ID="Label14" runat="server" CssClass="label" Text="Valor do Emprestimo: "></asp:Label>
         <br />
         <asp:Label ID="Label15" runat="server" CssClass="label" Text="R$"></asp:Label>
-        <asp:TextBox ID="TxtValorEmprestimo" runat="server" MaxLength="14" TextMode="Number" Width="60px" onkeyup="txtOnKeyPress();" Enabled="False"></asp:TextBox>
+        <asp:TextBox ID="TxtValorEmprestimo" runat="server" MaxLength="8" Width="60px" onkeyup="txtOnKeyPress();" Enabled="False"></asp:TextBox>
         <br />
         <asp:Label ID="Label2" runat="server" CssClass="label" Text="Prazo (meses): "></asp:Label><br />
         <asp:TextBox ID="TxtPrazo" runat="server" MaxLength="14" TextMode="Number" Width="60px" onkeyup="txtOnKeyPress();" Enabled="False"></asp:TextBox>

@@ -95,11 +95,10 @@ namespace Treinamento.WEB.Tabelas.banco
                 BancoBLL.Instance.Excluir(lBanco);
                 Web.ExibeAlerta(Page, "Banco excluído com sucesso!", "Listar.aspx");
             }
-            catch (BusinessException ex)
+            catch (Exception ex)
             {
-                Web.ExibeAlerta(Page, ex.Message);
+                Web.ExibeAlerta(Page, "Não é possivel excluir!");
             }
-        }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {

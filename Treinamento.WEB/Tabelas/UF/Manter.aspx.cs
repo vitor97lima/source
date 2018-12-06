@@ -97,13 +97,13 @@ namespace Treinamento.WEB.Tabelas.uf
         {
             try
             {
-				UnidadeFederativa lUf = UnidadeFederativaBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
-				UnidadeFederativaBLL.Instance.Excluir(lUf);
+                UnidadeFederativa lUf = UnidadeFederativaBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
+                UnidadeFederativaBLL.Instance.Excluir(lUf);
                 Web.ExibeAlerta(Page, "Unidade Federativa excluída com sucesso!", "Listar.aspx");
             }
-            catch (BusinessException ex)
+            catch (Exception ex)
             {
-                Web.ExibeAlerta(Page, ex.Message);
+                Web.ExibeAlerta(Page, "Não é possivel excluir!");
             }
         }
 

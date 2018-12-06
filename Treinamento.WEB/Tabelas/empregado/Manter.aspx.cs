@@ -151,7 +151,7 @@ namespace Treinamento.WEB.Tabelas.empregado
                 lEndereco.Numero = TxtEndNumero.Text.Trim();
                 lEndereco.Complemento = TxtEndComplemento.Text.Trim();
                 lEndereco.Cidade = lCidade;
-                lEndereco.Cep = Convert.ToInt32(TxtEndCep.Text);
+                lEndereco.Cep = Convert.ToInt32(TxtEndCep.Text.Replace("-", ""));
 
                 Banco lBanco = BancoBLL.Instance.BuscarPorId(Convert.ToInt32(DropDownBanco.SelectedValue));
                 Agencia lAgencia = AgenciaBLL.Instance.BuscarPorId(Convert.ToInt32(DropDownAgencia.SelectedValue));
@@ -187,9 +187,9 @@ namespace Treinamento.WEB.Tabelas.empregado
                 EmpregadoBLL.Instance.Excluir(lEmpregado);
                 Web.ExibeAlerta(Page, "Empregado excluída com sucesso!", "Listar.aspx");
             }
-            catch (BusinessException ex)
+            catch (Exception ex)
             {
-                Web.ExibeAlerta(Page, ex.Message);
+                Web.ExibeAlerta(Page, "Não é possivel excluir! Há Registros dependentes desse funcionario");
             }
         }
 

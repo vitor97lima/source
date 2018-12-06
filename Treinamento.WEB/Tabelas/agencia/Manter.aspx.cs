@@ -161,7 +161,7 @@ namespace Treinamento.WEB.Tabelas.agencia
                 lEndereco.Numero = TxtEndNumero.Text.Trim();
                 lEndereco.Complemento = TxtEndComplemento.Text.Trim();
                 lEndereco.Cidade = lCidade;
-                lEndereco.Cep = Convert.ToInt32(TxtEndCep.Text);
+                lEndereco.Cep = Convert.ToInt32(TxtEndCep.Text.Replace("-",""));
 
 
                 lAgencia.Nome = TxtNome.Text.Trim();
@@ -186,9 +186,9 @@ namespace Treinamento.WEB.Tabelas.agencia
                 AgenciaBLL.Instance.Excluir(lAgencia);
                 Web.ExibeAlerta(Page, "Agência excluída com sucesso!", "Listar.aspx");
             }
-            catch (BusinessException ex)
+            catch (Exception ex)
             {
-                Web.ExibeAlerta(Page, ex.Message);
+                Web.ExibeAlerta(Page, "Não é possivel excluir!");
             }
         }
 

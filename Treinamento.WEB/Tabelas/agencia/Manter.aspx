@@ -3,6 +3,53 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        function MascaraCep() {
+            if (mascaraInteiro(document.getElementById('<%=TxtEndCep.ClientID%>')) == false) {
+                 event.returnValue = false;
+             }
+             return formataCampo(document.getElementById('<%=TxtEndCep.ClientID%>'), '00000-000', event);
+         }
+         function mascaraInteiro() {
+             if (event.keyCode < 48 || event.keyCode > 57) {
+                 event.returnValue = false;
+                 return false;
+             }
+             return true;
+         }
+         //formata de forma generica os campos
+         function formataCampo(campo, Mascara, evento) {
+             var boleanoMascara;
+
+             var Digitato = evento.keyCode;
+             exp = /\-|\.|\/|\(|\)| /g
+             campoSoNumeros = campo.value.toString().replace(exp, "");
+
+             var posicaoCampo = 0;
+             var NovoValorCampo = "";
+             var TamanhoMascara = campoSoNumeros.length;;
+
+             if (Digitato != 8) { // backspace 
+                 for (i = 0; i <= TamanhoMascara; i++) {
+                     boleanoMascara = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".")
+                                                             || (Mascara.charAt(i) == "/"))
+                     boleanoMascara = boleanoMascara || ((Mascara.charAt(i) == "(")
+                                                             || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " "))
+                     if (boleanoMascara) {
+                         NovoValorCampo += Mascara.charAt(i);
+                         TamanhoMascara++;
+                     } else {
+                         NovoValorCampo += campoSoNumeros.charAt(posicaoCampo);
+                         posicaoCampo++;
+                     }
+                 }
+                 campo.value = NovoValorCampo;
+                 return true;
+             } else {
+                 return true;
+             }
+         }
+    </script>
     <div id="divFormulario">
         <asp:Panel ID="PanelManterUF" runat="server" GroupingText="Manutenção de Agência">
             <asp:Label ID="Label1" runat="server" Text="Nome: " CssClass="label"></asp:Label>
@@ -38,11 +85,11 @@
                 <br />
                 <asp:Label ID="Label8" runat="server" Text="CEP: " CssClass="label"></asp:Label>
                 <br />
-                <asp:TextBox ID="TxtEndCep" runat="server" MaxLength="8" Width="100"></asp:TextBox>
+                <asp:TextBox ID="TxtEndCep" runat="server" MaxLength="9" Width="100" onKeyPress="MascaraCep();"></asp:TextBox>
                 <br />
                 <asp:Label ID="Label9" runat="server" Text="UF: " CssClass="label"></asp:Label>
                 <br />
-                <asp:DropDownList ID="DropDownUf" runat="server" OnLoad="DropDownUf_SelectedIndexChanged" OnSelectedIndexChanged="DropDownUf_SelectedIndexChanged" style="height: 22px" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownUf" runat="server" OnLoad="DropDownUf_SelectedIndexChanged" OnSelectedIndexChanged="DropDownUf_SelectedIndexChanged" Style="height: 22px" AutoPostBack="True">
                 </asp:DropDownList>
                 <br />
                 <asp:Label ID="Label10" runat="server" Text="Cidade: " CssClass="label"></asp:Label>

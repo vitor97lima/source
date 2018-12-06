@@ -109,9 +109,9 @@ namespace Treinamento.WEB.Tabelas.cidade
                 CidadeBLL.Instance.Excluir(lCidade);
                 Web.ExibeAlerta(Page, "Cidade excluída com sucesso!", "Listar.aspx");
             }
-            catch (BusinessException ex)
+            catch (Exception ex)
             {
-                Web.ExibeAlerta(Page, ex.Message);
+                Web.ExibeAlerta(Page, "Não é possivel excluir!");
             }
         }
 

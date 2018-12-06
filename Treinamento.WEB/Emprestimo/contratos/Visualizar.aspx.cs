@@ -20,7 +20,7 @@ namespace Treinamento.WEB.Emprestimo.contratos
             lblNomeEmpregado.Text = lContrato.Empregado.Nome;
             TxtCodigo.Text = lContrato.Codigo.ToString();
             TxtPrazo.Text = lContrato.Prazo.ToString();
-            TxtValorEmprestimo.Text = lContrato.ValorEmprestimo.ToString();
+            TxtValorEmprestimo.Text = lContrato.ValorEmprestimo.ToString("0.00");
             lblValorPrestacao.Text = lContrato.ValorPrestacao.ToString();
             lblSituacao.Text = lContrato.Situacao.ToString();
             TxtDataConcessao.Text = lContrato.DataConcessao.ToString("yyyy-MM-dd");

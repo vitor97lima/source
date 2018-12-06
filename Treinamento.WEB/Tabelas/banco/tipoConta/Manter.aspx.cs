@@ -95,11 +95,10 @@ namespace Treinamento.WEB.Tabelas.banco.tipoConta
                 TipoContaBancariaBLL.Instance.Excluir(lTipoContaBancaria);
                 Web.ExibeAlerta(Page, "Tipo de Conta Bancária excluído com sucesso!", "Listar.aspx");
             }
-            catch (BusinessException ex)
+            catch (Exception ex)
             {
-                Web.ExibeAlerta(Page, ex.Message);
+                Web.ExibeAlerta(Page, "Não é possivel excluir!");
             }
-        }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {

@@ -54,7 +54,7 @@ namespace Treinamento.WEB.Emprestimo.contratos
                 lContrato.Empregado = EmpregadoBLL.Instance.BuscarPorId(Convert.ToInt32(Request.QueryString["id"]));
                 lContrato.Prazo = Convert.ToInt32(TxtPrazo.Text);
                 lContrato.Situacao = ESituacaoContrato.Solicitado;
-                lContrato.ValorEmprestimo = float.Parse(TxtValorEmprestimo.Text);
+                lContrato.ValorEmprestimo = float.Parse(TxtValorEmprestimo.Text.Trim());
                 lContrato.IndiceCorrecao = IndiceFinanceiroBLL.Instance.BuscarPorId(Convert.ToInt32(DropDownIndiceCorrecao.SelectedValue));
                 lContrato.ValorPrestacao = lContrato.ValorEmprestimo / lContrato.Prazo;
 
